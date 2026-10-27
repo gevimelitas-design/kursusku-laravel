@@ -1,83 +1,64 @@
-<!doctype html>
-<html lang="id">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $siteName }}</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-<body>
+@extends('layouts.app')
 
-<header class="topbar">
-    <div class="container">
-        <div class="brand">
-            <div class="brand-mark">K</div>
-            <div>
-                <strong>{{ $siteName }}</strong>
-                <small>Laravel MVC</small>
-            </div>
-        </div>
-        <span class="pill">Milestone 7</span>
-    </div>
-</header>
+@section('title', 'Beranda - KursusKu')
 
-<div class="subnav">
-    <div class="container">
-        <nav>
-            <a href="{{ route('home') }}">Beranda</a>
-            <a href="#alur">Alur MVC</a>
-            <a href="#kursus">Kursus Pilihan</a>
-        </nav>
-        <a href="#kursus" class="btn-light">Lihat Program</a>
-    </div>
-</div>
+@section('content')
+<section class="hero mb-5">
+    <div class="row align-items-center">
+        <div class="col-lg-8">
+            <span class="badge text-bg-success mb-3">
+                Kursus teknologi untuk mahasiswa
+            </span>
 
-<main class="container">
-    <section class="hero">
-        <div>
-            <p class="eyebrow">Pertemuan 7 · Framework Laravel</p>
-            <h1>Belajar terstruktur dengan Route, Controller, dan Blade.</h1>
-            <p class="lead">
-                Landing page {{ $siteName }} dipindahkan dari PHP biasa ke pola framework
-                Laravel. Request masuk melalui route, data disiapkan controller, lalu Blade
-                merender HTML.
+            <h1 class="display-5 fw-bold">
+                Belajar lebih terarah bersama KursusKu
+            </h1>
+
+            <p class="lead text-secondary">
+                Pilih kursus, cek ketersediaan kursi, lalu isi formulir pendaftaran.
             </p>
-            <div class="actions">
-                <a href="#kursus" class="btn btn-primary">Program Belajar Unggulan</a>
-                <a href="#alur" class="btn btn-outline">Lihat Alur MVC</a>
+
+            <a href="{{ route('enrollments.create') }}"
+               class="btn btn-success btn-lg px-4">
+                Daftar Kursus
+            </a>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2 class="h4 fw-bold mb-4">Kursus Tersedia</h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card feature-card h-100">
+                <div class="card-body">
+                    <h3 class="h5">Web Dasar</h3>
+                    <p class="text-secondary mb-0">
+                        Mengenal HTML, CSS, dan dasar-dasar membangun halaman web.
+                    </p>
+                </div>
             </div>
         </div>
-        <div class="hero-img">
-            <img src="{{ asset('images/hero-kursus.png') }}" alt="Ilustrasi kelas KursusKu">
+        <div class="col-md-4">
+            <div class="card feature-card h-100">
+                <div class="card-body">
+                    <h3 class="h5">PHP Dasar</h3>
+                    <p class="text-secondary mb-0">
+                        Logika pemrograman sisi server dengan PHP.
+                    </p>
+                </div>
+            </div>
         </div>
-    </section>
-
-    <section class="block" id="alur">
-        <h2>Alur MVC</h2>
-        <div class="flow">
-            <div>Browser<small>GET /</small></div>
-            <div>Route<small>web.php</small></div>
-            <div>Controller<small>HomeController@index</small></div>
-            <div>Blade View<small>home.blade.php</small></div>
-            <div>Response<small>HTML ke browser</small></div>
+        <div class="col-md-4">
+            <div class="card feature-card h-100">
+                <div class="card-body">
+                    <h3 class="h5">Laravel Dasar</h3>
+                    <p class="text-secondary mb-0">
+                        Route, Blade, dan struktur aplikasi dengan Laravel.
+                    </p>
+                </div>
+            </div>
         </div>
-    </section>
-
-    <section class="block" id="kursus">
-        <h2>Kursus Pilihan</h2>
-        <div class="course-grid">
-            @foreach ($featured as $course)
-                <article class="card">
-                    <small>{{ $course['code'] }}</small>
-                    <h3>{{ $course['name'] }}</h3>
-                    <p>{{ $course['description'] }}</p>
-                </article>
-            @endforeach
-        </div>
-    </section>
-</main>
-
-<footer>{{ $siteName }} · Praktikum Pemrograman Web III</footer>
-
-</body>
-</html>
+    </div>
+</section>
+@endsection
