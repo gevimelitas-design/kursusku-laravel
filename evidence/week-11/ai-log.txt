@@ -1,0 +1,17 @@
+# Log Penggunaan AI - Praktikum Pertemuan 11
+
+Nama: Gevi Melita Sari | NIM: 2524241 | PTIK 5G | Pemrograman Web III
+Proyek: KursusKu (Laravel) | Alat AI: Claude (Anthropic)
+
+| No. | Prompt / pertanyaan | Saran AI | Dipakai? | Alasan |
+|---|---|---|---|---|
+| 1 | Minta langkah-langkah dari Panduan Pertemuan 11 | Ringkasan 11 langkah dan langkah 0 untuk XAMPP | Ya | Urutan sesuai panduan dan disesuaikan dengan XAMPP |
+| 2 | Cara cek `route:list` dan apakah screenshot bisa jadi evidence 01 | `php artisan route:list --name=courses`; screenshot pertama terpotong, perlu diulang | Ya | Screenshot diulang sampai 8 route terlihat |
+| 3 | `show()` ditambahkan di bagian mana | Isi method `show()` yang kosong dengan `return view('courses.show', compact('course'))` | Ya | Memahami route model binding; `/courses/999999` menghasilkan 404 |
+| 4 | Kode `show.blade.php` dan lokasinya | View detail Bootstrap; satu `</div>` berlebih dari panduan dibuang | Ya | Halaman detail tampil dan cocok dengan MySQL |
+| 5 | Tombol Detail, Edit, Hapus di `index.blade.php` | Kolom Aksi dengan form DELETE (`@csrf`, `@method('DELETE')`, konfirmasi) | Ya | Sempat ParseError karena kode tertempel tidak lengkap; diperbaiki dengan menempel ulang seluruh file |
+| 6 | Membuat `StoreCourseRequest` dan `UpdateCourseRequest` | `make:request`, rules, `authorize()` true, `Rule::unique()->ignore($course)` untuk update | Ya | Validasi pindah ke Form Request; unique saat update harus mengabaikan record sendiri |
+| 7 | Refactor `CourseController` ke `validated()` | `store()` dan `update()` memakai Form Request; `destroy()` memanggil `delete()` | Ya | Controller lebih ringkas; `destroy()` yang kosong harus diganti |
+| 8 | Membuat `edit.blade.php` | Form dengan `@method('PUT')`, `old()`, dan `@error`; typo format tanggal `'Y-md'` dibetulkan jadi `'Y-m-d'` | Ya | Semua field terisi dan update berhasil dengan pesan sukses |
+| 9 | Screenshot kuota 501 untuk evidence 05 | Itu validasi browser (`max="500"`); hapus atributnya lewat DevTools agar server yang menolak | Ya | Bukti harus membuktikan server tidak mempercayai batasan UI |
+| 10 | Menu Daftar Kursus di navbar | Tambah `<li>` dengan `route('courses.index')` dan class `active`
