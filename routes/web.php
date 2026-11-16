@@ -1,12 +1,17 @@
 <?php
 
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::resource('courses', CourseController::class);
+
+Route::resource('enrollments', EnrollmentController::class)
+    ->only(['index', 'create', 'store']);
+
 Route::get('/pendaftaran', function () {
     $courses = [
         1 => ['name' => 'Web Dasar'],
@@ -14,8 +19,8 @@ Route::get('/pendaftaran', function () {
         3 => ['name' => 'Laravel Dasar'],
     ];
 
-    return view('enrollments.create', compact('courses'));
-})->name('enrollments.create');
+    return view('pendaftaran', compact('courses'));
+})->name('pendaftaran');
 
 Route::post('/pendaftaran/preview', function (Request $request) {
     $data = $request->validate([
