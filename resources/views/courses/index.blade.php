@@ -4,9 +4,27 @@
 
 @section('content')
 <div class="container py-4">
-    <div class="d-flex justify-content-between align-items-center mb-3">
+
+    <!-- BAGIAN HERO SECTION DENGAN GAMBAR DI KANAN -->
+    <div class="row align-items-center mb-5 bg-white p-4 rounded-4 shadow-sm">
+        <!-- Kolom Kiri: Teks -->
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <span class="badge bg-success mb-2 px-3 py-2">Kursus teknologi untuk mahasiswa</span>
+            <h1 class="display-5 fw-bold mb-3 text-dark">Belajar lebih terarah bersama KursusKu</h1>
+            <p class="text-muted mb-4">Pilih kursus, cek ketersediaan kursi, lalu isi formulir pendaftaran dengan mudah dan cepat.</p>
+            <a href="#daftar-kursus" class="btn btn-success px-4 py-2">Daftar Kursus</a>
+        </div>
+        
+        <!-- Kolom Kanan: Gambar Hero -->
+        <div class="col-lg-6 text-center">
+            <img src="{{ asset('images/hero-kursus.jpg') }}" alt="Suasana belajar di KursusKu" class="img-fluid rounded-3 shadow-sm">
+        </div>
+    </div>
+    <!-- AKHIR HERO SECTION -->
+
+    <div id="daftar-kursus" class="d-flex justify-content-between align-items-center mb-3">
         <div>
-            <h1 class="h3 mb-1">Daftar Kursus</h1>
+            <h2 class="h3 mb-1">Daftar Kursus Tersedia</h2>
             <p class="text-muted mb-0">Data diambil dari MySQL melalui Eloquent.</p>
         </div>
         <a href="{{ route('courses.create') }}" class="btn btn-primary">+ Tambah Kursus</a>
